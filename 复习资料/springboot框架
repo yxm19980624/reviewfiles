@@ -1,0 +1,38 @@
+解释一下IOC和DI
+IOC：控制反转，对象的创建过程反转了，创建对象交给spring容器完成。
+DI：依赖注入，spring容器创建完对象后，给对象赋值，这时候可以DI来对其进行依赖注入。
+
+
+依赖注入的几种方式：
+构造函数注入  setter方法注入  接口注入  工作中用的最多的是setter方法注入
+
+
+自动装配的规则有哪些，怎么自定义自动装配规则：
+no(无自动装备规则)  byName  byType  constructor等
+
+
+aop是什么？
+面向切面编程，一般有连接点 切点 切面 通知等组成。只适用于具有那些具有横向逻辑的应用场合，如性能检测，日志记录，事务管理等。
+
+
+
+controller和restcontroller的区别：
+使用controller注解一般是用在springMVC框架上，返回的结果可以返回到一个modelAndView对象里，经过视图渲染可以解析到jsp或者html中；
+restcontroller是responseBody注解和controller注解合成的，他返回的结果是一个json串。
+
+
+springboot常用注解：
+@SpringBootApplication  主类启动
+@Repository  标注dao组件
+@Service  标注业务层
+@RestController  标注控制层
+@ResponseBody  返回结果作为json串返回
+@ComponentScan  用于注解扫描 把上面注册为bean
+@AutoWired  自动注入 byType方式
+@Qualifier("name")  多个同一类型的bean 配合autoWired使用
+@RequestMapping  路径映射
+
+
+
+怎么选择springboot项目运行环境
+在properties文件中指定spring.profiles.active=dev即可

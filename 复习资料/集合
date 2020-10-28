@@ -1,0 +1,15 @@
+集合常用的有哪几种？他们之间的区别是什么？
+list map set
+list分为arraylist和linkedlist    arraylist底层是数组，linkedlist底层是双链表。所以arraylist查询速度快，linkedlist增删速度快。
+map分为hashmap和treemap hashmap底层是基于哈希表实现的 treemap底层是基于红黑树实现的。 hashmap是通过hashcode对其内容快速查找，而
+treemap中是所有元素都保持固定的顺序。所以如果想得到一个有序的结果建议使用treemap。
+set分为hashset和treeset hashset底层也是基于哈希表实现的 treeset底层也是基于红黑树实现的。
+list和set的最大区别就是list里面的元素是有序的可以重复的，set里面的元素是无序的不可以重复。可以根据这个特点选择你想要的集合类型。
+
+集合怎么删除数据
+1.通过下标删除
+2.通过元素删除 或者新建集合调用集合的removeall方法
+3.迭代器删除 注意调用的是iterator的remove方法 需要每次进行i--操作 否则会出现数据问题
+4.for循环删除 foreach不行会报错
+5.jdk1.8之后 新增方法 removeif删除 removeif(list -> list.equals(某元素))
+

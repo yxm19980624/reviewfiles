@@ -1,0 +1,76 @@
+增删改查语句怎么写
+insert into 表名（列名……） values (值……)
+delete from 表名 where 条件
+update 表名 set 列名 = 新值 where 列名 = 某值
+select 列名…… from 表名 where 条件
+
+
+
+
+
+mybatis怎么实现批量插入数据
+使用mybatis的foreach批量插入，把要插入的数据整理成一个list集合，在xml中遍历该集合，以逗号进行分隔
+<insert id="insertBatch" >
+    insert into 表名 (列名……)
+    values
+    <foreach collection="list" item="item" index="index" separator=",">
+        (null,#{item.name},#{item.sex},#{item.address})
+    </foreach>
+</insert>
+
+
+
+
+数据库事务的四大特性：
+原子性 一致性 隔离性 永久性
+
+
+SQL优化
+使用explain查询sql的运行效率
+sql关键字的替换 例如 in用between and替换
+；select不要写*；
+只需要一条数据时末尾增加limit 1；
+使用索引；
+or使用union all或者union代替；
+in关键字用exist代替；
+避免在where条件判断时判断null值；
+不要使用前缀模糊查询例如 like %name%这种，会导致索引失效；
+尽量使用inner join，用小表来驱动大表查询数据。
+
+
+
+
+
+索引的作用：
+建立索引的目的是加快对表中记录的查找或排序，为表设置索引要付出代价；
+一是增加了数据库的存储空间，
+二是在插入和修改数据时要花费更多的时间（因为索引也会随之改变）。
+
+
+
+
+
+类型：
+普通索引：基本的索引，但是没有唯一限制。
+唯一索引：和普通索引相似，但是有唯一限制，类似身份证，车牌号这种建议使用。
+主键索引：基本上是用表的主键作为索引，UUID这种。
+组合索引：两个列组合起来作为一个索引，查询的时候条件组合。
+前缀索引：用来根据前缀来分批次划分数据。
+全文索引：基本用在char varchar text这种类型的字段上。或者在需要进行模糊查询时建议使用全文索引。
+
+
+
+
+
+什么情况下用索引，改怎么选择索引？
+情况：表连接的时候，连接的字段应该建立索引；更新太频繁的字段最好不要建立索引，因为增删改的时候索引也跟着改；
+where条件后面的应该建立索引；索引最好建立在小字段上。
+选择：同上类型选择。
+
+
+
+
+
+怎么判断索引有没有生效？
+使用关键字explain来查询。table：显示这一行的数据是关于哪张表的 type：这是重要的列，显示连接使用了何种类型。
+从最好到最差的连接类型为const、eq_reg、ref、range、indexhe和ALL
