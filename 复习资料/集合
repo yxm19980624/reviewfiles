@@ -8,7 +8,7 @@ list和set的最大区别就是list里面的元素是有序的可以重复的，
 
 集合怎么删除数据
 1.通过下标删除
-2.通过元素删除 或者新建集合调用集合的removeall方法
+2.通过元素删除 或者新建集合调用集合的removeAll方法
 3.迭代器删除 注意调用的是iterator的remove方法 需要每次进行i--操作 否则会出现数据问题
 4.for循环删除 foreach不行会报错
 5.jdk1.8之后 新增方法 removeif删除 removeif(list -> list.equals(某元素))
