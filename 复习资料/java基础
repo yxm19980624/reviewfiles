@@ -19,3 +19,13 @@ post请求和get请求的区别有 post请求是通过requestbod传参，get是�
 因为get请求参数是放在url中所以是有长度限制的，post没有
 get参数暴露在外不安全，post相对来说安全一些
 
+
+MD5加密解密过程
+用指定的key对数据进行DES加密
+加密解密过程:
+需要一个可信任的随机数源(SecureRandom)
+从原始密匙数据创建DESKeySpec对象(DESKeySpec dks = new DESKeySpec(key);)
+创建一个密钥工厂并且实例化
+Cipher对象实际完成加密操作
+用密匙初始化Cipher对象，调用Cipher对象的init方法
+最后加密操作，调用Cipher对象的doFinal方法
